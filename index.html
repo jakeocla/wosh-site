@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wosh - פרנסה קהילתית על בסיס אמון</title>
+  <meta name="description" content="Wosh מחבר בין משפחות לעובדים מהקהילה. ניקיון, תחזוקה, בייביסיטר. 40 שח רק אחרי שהעבודה בוצעה.">
+  <meta name="keywords" content="מנקה, בייביסיטר, עוזרת בית, תחזוקה, שירותים לבית, תל אביב, ירושלים">
+  <meta property="og:title" content="Wosh - פרנסה קהילתית על בסיס אמון">
+  <meta property="og:description" content="שלחו מייל, קבלו התאמה, שלמו רק אחרי. כלכלה קהילתית פשוטה.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wosh.org.il">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫧</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --blue: #3B82F6;
+      --blue-dark: #2563EB;
+      --emerald: #10B981;
+      --emerald-dark: #059669;
+      --slate-50: #F8FAFC;
+      --slate-100: #F1F5F9;
+      --slate-200: #E2E8F0;
+      --slate-500: #64748B;
+      --slate-700: #334155;
+      --slate-900: #0F172A;
+    }
+
+    body {
+      font-family: 'Heebo', system-ui, sans-serif;
+      color: var(--slate-900);
+      background: #fff;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--slate-200);
+      z-index: 100;
+      padding: 0.75rem 0;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .logo span { opacity: 0.7; }
+    .nav-cta {
+      background: var(--blue);
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--blue-dark); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1.5rem 4rem;
+      background: linear-gradient(135deg, #EFF6FF 0%, #F0FDF4 50%, #FFF 100%);
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(transparent, #fff);
+    }
+    .hero-content { max-width: 700px; position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-block;
+      background: var(--emerald);
+      color: #fff;
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      color: var(--slate-900);
+    }
+    .hero h1 .accent { color: var(--blue); }
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--slate-500);
+      margin-bottom: 2.5rem;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--blue);
+      color: #fff;
+      padding: 1rem 2.5rem;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(59,130,246,0.35);
+    }
+    .hero-cta:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(59,130,246,0.4);
+    }
+    .hero-sub {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--slate-500);
+    }
+
+    /* BUBBLES (decorative) */
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--blue);
+      opacity: 0.04;
+      animation: float 20s infinite ease-in-out;
+    }
+    .bubble:nth-child(1) { width: 300px; height: 300px; top: 10%; right: -5%; animation-delay: 0s; }
+    .bubble:nth-child(2) { width: 200px; height: 200px; bottom: 20%; left: -3%; animation-delay: -7s; background: var(--emerald); }
+    .bubble:nth-child(3) { width: 150px; height: 150px; top: 30%; left: 10%; animation-delay: -14s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+    }
+
+    /* SECTIONS */
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--slate-500);
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* HOW IT WORKS */
+    .how-it-works { background: var(--slate-50); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .step {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--slate-200);
+      transition: all 0.3s;
+    }
+    .step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+    .step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0 auto 1.25rem;
+      color: #fff;
+    }
+    .step:nth-child(1) .step-num { background: var(--blue); }
+    .step:nth-child(2) .step-num { background: var(--emerald); }
+    .step:nth-child(3) .step-num { background: #8B5CF6; }
+    .step-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .step h3 { font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: 700; }
+    .step p { color: var(--slate-500); font-size: 0.95rem; }
+
+    /* TRUST */
+    .trust-section { background: #fff; }
+    .trust-card {
+      background: linear-gradient(135deg, #EFF6FF 0%, #ECFDF5 100%);
+      border-radius: 20px;
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .trust-text h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem; }
+    .trust-text p { color: var(--slate-700); line-height: 1.8; margin-bottom: 1rem; }
+    .trust-price {
+      text-align: center;
+      padding: 2rem;
+    }
+    .trust-price .amount {
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .trust-price .currency {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .trust-price .label {
+      font-size: 1.1rem;
+      color: var(--slate-500);
+      margin-top: 0.5rem;
+    }
+    .trust-price .sublabel {
+      font-size: 0.85rem;
+      color: var(--emerald);
+      font-weight: 700;
+      margin-top: 0.25rem;
+    }
+
+    /* CATEGORIES */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .cat-card {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--slate-50);
+      border-radius: 16px;
+      border: 1px solid transparent;
+      transition: all 0.3s;
+    }
+    .cat-card:hover {
+      border-color: var(--blue);
+      background: #fff;
+      box-shadow: 0 8px 30px rgba(59,130,246,0.1);
+    }
+    .cat-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .cat-card h3 { font-size: 1.05rem; font-weight: 600; }
+    .cat-card p { font-size: 0.85rem; color: var(--slate-500); margin-top: 0.25rem; }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: var(--slate-900);
+      color: #fff;
+      text-align: center;
+      padding: 5rem 1.5rem;
+    }
+    .cta-section h2 { font-size: 2.25rem; font-weight: 700; margin-bottom: 1rem; }
+    .cta-section p { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--blue);
+      color: #fff;
+      padding: 1.25rem 2.5rem;
+      border-radius: 14px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s;
+      direction: ltr;
+    }
+    .cta-email:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px);
+    }
+    .cta-note {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* FAQ */
+    .faq-section { background: var(--slate-50); }
+    .faq-list { max-width: 700px; margin: 0 auto; }
+    .faq-item {
+      background: #fff;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      border: 1px solid var(--slate-200);
+      overflow: hidden;
+    }
+    .faq-q {
+      padding: 1.25rem 1.5rem;
+      font-weight: 600;
+      font-size: 1.05rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .faq-q::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--blue);
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    .faq-a-inner {
+      padding: 0 1.5rem 1.25rem;
+      color: var(--slate-500);
+      line-height: 1.8;
+    }
+    .faq-item.open .faq-a { max-height: 300px; }
+
+    /* FOOTER */
+    footer {
+      background: #fff;
+      border-top: 1px solid var(--slate-200);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
+    footer p { color: var(--slate-500); font-size: 0.85rem; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .steps { grid-template-columns: 1fr; gap: 1rem; }
+      .trust-card { grid-template-columns: 1fr; gap: 2rem; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .hero h1 { font-size: 2.25rem; }
+      .hero p { font-size: 1.05rem; }
+      .hero-cta { padding: 0.85rem 2rem; font-size: 1.05rem; }
+      .cta-email { font-size: 1.1rem; padding: 1rem 2rem; }
+      .footer-inner { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">Wosh <span>🫧</span></a>
+      <a href="mailto:wosh@jakeocla.com?subject=אני מעוניין בשירות" class="nav-cta">שלחו מייל</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="hero-content">
+      <div class="hero-badge">כלכלה קהילתית חדשה</div>
+      <h1>פרנסה מהקהילה,<br><span class="accent">על בסיס אמון</span></h1>
+      <p>Wosh מחבר בין משפחות לעובדים מהשכונה. מנקה, שיפוצניק, בייביסיטר — בלי אפליקציה, בלי טפסים. פשוט מייל.</p>
+      <a href="mailto:jakeocla@gmail.com?subject=מחפש/ת עזרה&body=היי, אני מחפש/ת:" class="hero-cta">
+        שלחו מייל — מתחילים
+      </a>
+      <div class="hero-sub">jakeocla@gmail.com &bull; תשובה אוטומטית תוך דקה</div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-title">איך זה עובד?</h2>
+      <p class="section-subtitle">שלושה צעדים פשוטים. בלי רישום, בלי אפליקציה, בלי סיבוכים.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-icon">📧</div>
+          <h3>שלחו מייל</h3>
+          <p>כתבו מה אתם צריכים — מנקה, בייביסיטר, שיפוצניק. ציינו עיר, יום ושעות.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-icon">🤝</div>
+          <h3>קבלו התאמה</h3>
+          <p>המערכת מחפשת עובד/ת מתאים/ה מהקהילה ושולחת לכם את הפרטים ישירות למייל.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-icon">✅</div>
+          <h3>שלמו 40 ש"ח רק אחרי</h3>
+          <p>דמי ההתאמה משולמים רק לאחר שהעבודה בוצעה בפועל. על בסיס אמון.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST MODEL -->
+  <section class="trust-section">
+    <div class="container">
+      <div class="trust-card">
+        <div class="trust-text">
+          <h2>המודל שלנו? אמון.</h2>
+          <p>אנחנו לא גובים מראש. אנחנו לא דורשים כרטיס אשראי. אנחנו לא נועלים אתכם על חוזה.</p>
+          <p>הרעיון פשוט: אנחנו מוצאים לכם את האדם הנכון, ואם העבודה בוצעה לשביעות רצונכם — אתם משלמים 40 ש"ח דמי התאמה. זהו.</p>
+          <p><strong>למה זה עובד?</strong> כי אנשים טובים. כי קהילה בנויה על אמון. כי כשנותנים אמון — מקבלים אמון בחזרה.</p>
+        </div>
+        <div class="trust-price">
+          <div class="amount">40</div>
+          <div class="currency">ש"ח</div>
+          <div class="label">דמי התאמה</div>
+          <div class="sublabel">רק אחרי שהעבודה בוצעה</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">מה אפשר למצוא?</h2>
+      <p class="section-subtitle">עובדים מהקהילה, בדיוק כשצריך</p>
+      <div class="categories-grid">
+        <div class="cat-card">
+          <div class="cat-icon">🧹</div>
+          <h3>ניקיון</h3>
+          <p>עוזרת בית, ניקיון יסודי</p>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon">🔧</div>
+          <h3>תחזוקה</h3>
+          <p>שיפוצים, תיקונים, הרכבה</p>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon">👶</div>
+          <h3>בייביסיטר</h3>
+          <p>שמרטפות מהשכונה</p>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon">🏠</div>
+          <h3>משק בית</h3>
+          <p>סידור, ארגון, כביסה</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR WORKERS -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-title">מחפשים עבודה?</h2>
+      <p class="section-subtitle">הצטרפו כעובדים ותתחילו לקבל הזמנות מהקהילה</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-icon">✍️</div>
+          <h3>שלחו מייל הרשמה</h3>
+          <p>כתבו "רוצה לעבוד" + סוג עבודה, אזור, ומחיר לשעה.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-icon">📱</div>
+          <h3>קבלו הזמנות</h3>
+          <p>כשלקוח מחפש עובד באזור שלכם — תקבלו הודעה.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-icon">💰</div>
+          <h3>הרוויחו</h3>
+          <p>100% מהתשלום הולך אליכם. אנחנו לא לוקחים עמלה מהעובדים.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <h2 class="section-title">שאלות נפוצות</h2>
+      <p class="section-subtitle">כל מה שצריך לדעת</p>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">מה קורה אם העובד/ת לא מתאים/ה?</div>
+          <div class="faq-a"><div class="faq-a-inner">פשוט השיבו "תפוס" למייל ונשלח לכם חלופה. אתם לא משלמים עד שהעבודה בוצעה לשביעות רצונכם.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">למה רק 40 ש"ח?</div>
+          <div class="faq-a"><div class="faq-a-inner">אנחנו מיזם קהילתי, לא סטארטאפ. המטרה היא לייצר פרנסה מהקהילה ולעזור למשפחות. 40 ש"ח מכסים את עלויות התפעול ומאפשרים לנו להמשיך לעזור.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">איך אני יודע/ת שהעובדים אמינים?</div>
+          <div class="faq-a"><div class="faq-a-inner">כל עובד מדורג אחרי כל עבודה. עובדים עם דירוג גבוה מקבלים עדיפות. בנוסף, כל העובדים הם מהקהילה — שכנים עוזרים לשכנים.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">למה מייל ולא אפליקציה?</div>
+          <div class="faq-a"><div class="faq-a-inner">כי פשוט עובד. לא צריך להוריד אפליקציה, לא צריך ליצור חשבון, לא צריך לזכור סיסמה. כל אחד יודע לשלוח מייל. זה נגיש לכולם — כולל מי שלא חי על הטלפון.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">אני עובד/ת — כמה אני מרוויח/ה?</div>
+          <div class="faq-a"><div class="faq-a-inner">100% מהתשלום הולך אליכם. אנחנו לא לוקחים עמלה מעובדים — אף פעם. אתם קובעים את המחיר שלכם.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>מוכנים להתחיל?</h2>
+    <p>שלחו מייל עם מה שאתם צריכים ותקבלו תשובה אוטומטית תוך דקה.</p>
+    <a href="mailto:jakeocla@gmail.com?subject=מחפש/ת עזרה&body=היי, אני מחפש/ת:" class="cta-email">
+      📧 jakeocla@gmail.com
+    </a>
+    <div class="cta-note">בלי רישום. בלי התחייבות. בלי כרטיס אשראי.</div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Wosh 🫧</div>
+      <p>פרנסה קהילתית על בסיס אמון &bull; 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+
+    // Smooth reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.step, .cat-card, .trust-card, .faq-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
