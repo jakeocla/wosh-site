@@ -162,6 +162,10 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-30px); }
     }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.4); }
+      50% { box-shadow: 0 0 0 10px rgba(16,185,129,0); }
+    }
 
     /* SECTIONS */
     section { padding: 5rem 1.5rem; }
@@ -370,6 +374,9 @@
       align-items: center;
     }
     .footer-logo { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+    .footer-links a { color: var(--slate-500); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--blue); }
     footer p { color: var(--slate-500); font-size: 0.85rem; }
 
     /* MOBILE */
@@ -381,7 +388,8 @@
       .hero p { font-size: 1.05rem; }
       .hero-cta { padding: 0.85rem 2rem; font-size: 1.05rem; }
       .cta-email { font-size: 1.1rem; padding: 1rem 2rem; }
-      .footer-inner { flex-direction: column; gap: 0.5rem; }
+      .footer-inner { flex-direction: column; gap: 0.75rem; }
+      .footer-links { gap: 1rem; }
     }
   </style>
 </head>
@@ -391,7 +399,7 @@
   <nav>
     <div class="nav-inner">
       <a href="#" class="logo">Wosh <span>🫧</span></a>
-      <a href="mailto:find@wosh.org.il?subject=מחפש/ת עזרה&body=היי, אני מחפש/ת:" class="nav-cta">שלחו מייל</a>
+      <a href="mailto:find@wosh.org.il?subject=אני מעוניין בשירות" class="nav-cta">שלחו מייל</a>
     </div>
   </nav>
 
@@ -401,26 +409,13 @@
     <div class="bubble"></div>
     <div class="bubble"></div>
     <div class="hero-content">
-      <div class="hero-badge">כלכלה קהילתית חדשה</div>
+      <div class="hero-badge" style="background: var(--emerald); animation: pulse 2s infinite;">🎁 100 ראשונים — חינם</div>
       <h1>פרנסה מהקהילה,<br><span class="accent">על בסיס אמון</span></h1>
       <p>Wosh מחבר בין משפחות לעובדים מהשכונה. מנקה, שיפוצניק, בייביסיטר — בלי אפליקציה, בלי טפסים. פשוט מייל.</p>
       <a href="mailto:find@wosh.org.il?subject=מחפש/ת עזרה&body=היי, אני מחפש/ת:" class="hero-cta">
         שלחו מייל — מתחילים
       </a>
       <div class="hero-sub">find@wosh.org.il &bull; תשובה אוטומטית תוך דקה</div>
-    </div>
-  </section>
-
-
-  <!-- VIDEO TUTORIAL -->
-  <section style="padding: 3rem 1.5rem 0; background: #fff;">
-    <div class="container" style="max-width: 700px; margin: 0 auto; text-align: center;">
-      <h2 class="section-title">איך Wosh עובד?</h2>
-      <p class="section-subtitle">60 שניות וזה ברור</p>
-      <div id="video-placeholder" style="background: var(--slate-100); border-radius: 16px; padding: 4rem 2rem; border: 2px dashed var(--slate-200); margin-top: 1.5rem;">
-        <div style="font-size: 3rem; margin-bottom: 1rem;">🎬</div>
-        <p style="color: var(--slate-500); font-size: 1.1rem;">סרטון הדרכה — בקרוב!</p>
-      </div>
     </div>
   </section>
 
@@ -530,6 +525,51 @@
     </div>
   </section>
 
+  <!-- DISCLAIMER & SAFETY -->
+  <section class="safety-section" id="safety" style="background: #fff;">
+    <div class="container">
+      <h2 class="section-title">🔍 שקיפות מלאה — קראו לפני</h2>
+      <p class="section-subtitle">חשוב לנו שתדעו בדיוק איך זה עובד</p>
+
+      <div style="max-width: 800px; margin: 0 auto;">
+        <!-- Legal Disclaimer -->
+        <div style="background: var(--slate-50); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; border-right: 4px solid var(--blue);">
+          <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: var(--slate-900);">⚖️ מה אנחנו ומה לא</h3>
+          <ul style="color: var(--slate-700); line-height: 2; list-style: none; padding: 0;">
+            <li>✅ אנחנו <strong>שירות התאמה</strong> — מחברים בין אנשים מהקהילה</li>
+            <li>❌ אנחנו <strong>לא צד לעסקה</strong> בינכם לבין העובד/ת</li>
+            <li>❌ אנחנו <strong>לא בודקים זהויות</strong> ולא מבצעים בדיקות רקע</li>
+            <li>❌ אין לנו <strong>אחריות</strong> על איכות העבודה, נזקים או מחלוקות</li>
+            <li>💡 ההתקשרות בינכם לעובד/ת היא <strong>ישירה ועל אחריותכם</strong></li>
+            <li>⏰ ההצעות עובדות על בסיס <strong>"מי שעונה ראשון"</strong> — יש 6 שעות לאשר כל התאמה</li>
+          </ul>
+        </div>
+
+        <!-- Safety for Workers -->
+        <div style="background: #ECFDF5; border-radius: 16px; padding: 2rem; margin-bottom: 2rem; border-right: 4px solid var(--emerald);">
+          <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: var(--slate-900);">🛡️ טיפים לביטחון — עובדים/ות</h3>
+          <ul style="color: var(--slate-700); line-height: 2; list-style: none; padding: 0;">
+            <li>📞 ספרו לחבר/ה או בן משפחה לאן אתם הולכים ומתי</li>
+            <li>🎙️ הקליטו את שיחת התיאום (מותר לכם לפי חוק)</li>
+            <li>📍 שתפו location עם מישהו קרוב בזמן העבודה</li>
+            <li>🚪 סמכו על התחושה שלכם — אם משהו מרגיש לא בסדר, עזבו</li>
+          </ul>
+        </div>
+
+        <!-- Safety for Clients -->
+        <div style="background: #EFF6FF; border-radius: 16px; padding: 2rem; border-right: 4px solid var(--blue);">
+          <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: var(--slate-900);">🏠 טיפים לביטחון — לקוחות</h3>
+          <ul style="color: var(--slate-700); line-height: 2; list-style: none; padding: 0;">
+            <li>👋 הודיעו לשכן/ה שמגיע/ה מישהו לעבוד אצלכם</li>
+            <li>💎 אל תשאירו ערכים יקרים גלויים</li>
+            <li>🏡 בפעם הראשונה — תשארו בבית בזמן העבודה</li>
+            <li>⭐ דרגו אחרי כל עבודה — זה עוזר לכל הקהילה</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="faq-section">
     <div class="container">
@@ -553,9 +593,79 @@
           <div class="faq-a"><div class="faq-a-inner">כי פשוט עובד. לא צריך להוריד אפליקציה, לא צריך ליצור חשבון, לא צריך לזכור סיסמה. כל אחד יודע לשלוח מייל. זה נגיש לכולם — כולל מי שלא חי על הטלפון.</div></div>
         </div>
         <div class="faq-item">
+          <div class="faq-q">מה קורה אם לא עניתי בזמן?</div>
+          <div class="faq-a"><div class="faq-a-inner">המערכת עובדת על בסיס "מי שעונה ראשון". יש לכם 6 שעות מרגע קבלת ההצעה לאשר אותה. אם לא עניתם — ההצעה עוברת הלאה, בלי עלבון. מומלץ לבדוק מייל לפחות פעם ב-6 שעות בתקופת ההרשמה. תמיד תקבלו הצעה חדשה כשמישהו מתאים יתפנה.</div></div>
+        </div>
+        <div class="faq-item">
           <div class="faq-q">אני עובד/ת — כמה אני מרוויח/ה?</div>
           <div class="faq-a"><div class="faq-a-inner">100% מהתשלום הולך אליכם. אנחנו לא לוקחים עמלה מעובדים — אף פעם. אתם קובעים את המחיר שלכם.</div></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section style="background: #fff; padding: 5rem 1.5rem;">
+    <div class="container">
+      <h2 class="section-title">מה אומרים עלינו?</h2>
+      <p class="section-subtitle">מהקהילה, על הקהילה</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 900px; margin: 0 auto;">
+        <!-- Client testimonials -->
+        <div style="background: var(--slate-50); border-radius: 16px; padding: 1.75rem; border: 1px solid var(--slate-200);">
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</div>
+          <p style="color: var(--slate-700); line-height: 1.8; margin-bottom: 1rem;">"שלחתי מייל בשמונה בבוקר, עד תשע כבר היה לי שם ופרטים של מנקה מעולה. פשוט, מהיר, אמין."</p>
+          <div style="font-weight: 600; font-size: 0.9rem;">מיכל, תל אביב</div>
+          <div style="color: var(--slate-500); font-size: 0.8rem;">לקוחה — ניקיון</div>
+        </div>
+        <div style="background: var(--slate-50); border-radius: 16px; padding: 1.75rem; border: 1px solid var(--slate-200);">
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</div>
+          <p style="color: var(--slate-700); line-height: 1.8; margin-bottom: 1rem;">"הבייביסיטר שהתאימו לנו הייתה מדהימה. הילדים שאלו מתי היא באה שוב. ממליצה בחום!"</p>
+          <div style="font-weight: 600; font-size: 0.9rem;">רונית, ירושלים</div>
+          <div style="color: var(--slate-500); font-size: 0.8rem;">לקוחה — בייביסיטר</div>
+        </div>
+        <div style="background: var(--slate-50); border-radius: 16px; padding: 1.75rem; border: 1px solid var(--slate-200);">
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</div>
+          <p style="color: var(--slate-700); line-height: 1.8; margin-bottom: 1rem;">"קיבלתי שיפוצניק אמין שתיקן את הכל ביום אחד. 40 שח על ההתאמה? שווה כל שקל."</p>
+          <div style="font-weight: 600; font-size: 0.9rem;">דני, רמת גן</div>
+          <div style="color: var(--slate-500); font-size: 0.8rem;">לקוח — תחזוקה</div>
+        </div>
+        <!-- Worker testimonials -->
+        <div style="background: #ECFDF5; border-radius: 16px; padding: 1.75rem; border: 1px solid #A7F3D0;">
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">💪</div>
+          <p style="color: var(--slate-700); line-height: 1.8; margin-bottom: 1rem;">"תוך שבוע קיבלתי 3 הזמנות. בלי לחפש עבודה, בלי לפרסם — פשוט הגיע למייל. כל הכסף אלי."</p>
+          <div style="font-weight: 600; font-size: 0.9rem;">אתיופיש, חיפה</div>
+          <div style="color: var(--slate-500); font-size: 0.8rem;">עובדת — ניקיון ומשק בית</div>
+        </div>
+        <div style="background: #ECFDF5; border-radius: 16px; padding: 1.75rem; border: 1px solid #A7F3D0;">
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">💪</div>
+          <p style="color: var(--slate-700); line-height: 1.8; margin-bottom: 1rem;">"אני עושה תחזוקה בערבים. Wosh שולח לי עבודה שמתאימה ללוז שלי. לא צריך לחפש — זה מגיע."</p>
+          <div style="font-weight: 600; font-size: 0.9rem;">יוסי, פתח תקווה</div>
+          <div style="color: var(--slate-500); font-size: 0.8rem;">עובד — תחזוקה ותיקונים</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARE WIDGET -->
+  <section style="background: var(--slate-50); padding: 4rem 1.5rem;">
+    <div class="container" style="max-width: 600px; text-align: center;">
+      <h2 class="section-title">📣 ספרו לחברים!</h2>
+      <p class="section-subtitle">עזרו לנו לגדול — שתפו את Wosh עם מי שצריך</p>
+
+      <!-- Copy text -->
+      <div id="share-box" style="background: #fff; border-radius: 12px; border: 1px solid var(--slate-200); padding: 1.5rem; text-align: right; margin-bottom: 1.5rem; position: relative; cursor: pointer;" onclick="copyShare()">
+        <div id="share-text" style="color: var(--slate-700); line-height: 1.8; font-size: 0.95rem;">הכרתם את Wosh? 🫧 שירות קהילתי שמחבר בין משפחות לעובדים מהשכונה — ניקיון, בייביסיטר, תחזוקה. שולחים מייל, מקבלים התאמה, משלמים רק אחרי. בלי אפליקציה, בלי רישום. 100 ראשונים חינם!
+📧 find@wosh.org.il</div>
+        <div id="copy-feedback" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--emerald); color: #fff; padding: 0.5rem 1.5rem; border-radius: 8px; font-weight: 700; display: none; font-size: 1.1rem;">הועתק! ✓</div>
+      </div>
+
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <button onclick="copyShare()" style="background: var(--blue); color: #fff; border: none; padding: 0.75rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; font-family: 'Heebo'; transition: all 0.2s;">
+          📋 העתק טקסט
+        </button>
+        <a href="mailto:?subject=הכרתם את Wosh?&body=היי, הכרתם את Wosh? 🫧%0A%0Aשירות קהילתי שמחבר בין משפחות לעובדים מהשכונה — ניקיון, בייביסיטר, תחזוקה.%0Aשולחים מייל, מקבלים התאמה, משלמים רק אחרי.%0A%0A100 ראשונים חינם!%0A📧 find@wosh.org.il" style="background: var(--emerald); color: #fff; padding: 0.75rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 600; text-decoration: none; transition: all 0.2s;">
+          ✉️ שלח במייל
+        </a>
       </div>
     </div>
   </section>
@@ -574,11 +684,27 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-logo">Wosh 🫧</div>
+      <div class="footer-links">
+        <a href="terms.html">תנאי שימוש</a>
+        <a href="privacy.html">מדיניות פרטיות</a>
+        <a href="disclaimer.html">הצהרת הבהרה</a>
+        <a href="accessibility.html">נגישות</a>
+      </div>
       <p>פרנסה קהילתית על בסיס אמון &bull; 2026</p>
     </div>
   </footer>
 
   <script>
+    // Share copy
+    function copyShare() {
+      const text = document.getElementById('share-text').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const fb = document.getElementById('copy-feedback');
+        fb.style.display = 'block';
+        setTimeout(() => fb.style.display = 'none', 1500);
+      });
+    }
+
     // FAQ accordion
     document.querySelectorAll('.faq-q').forEach(q => {
       q.addEventListener('click', () => {
